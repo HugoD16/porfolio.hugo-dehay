@@ -1,26 +1,52 @@
-const items = [
-  { title: "CCNA : Présentation des réseaux", desc: "Certification Cisco Networking Academy.", file: "/certifications/CCNA.pdf" },
-  { title: "Linux : L’administration avancée", desc: "Certification LinkedIn Learning sur l’administration Linux avancée.", file: "/certifications/Linux_Admin_Avancee.pdf" },
-  { title: "Prompt engineering pour la génération de contenu avec l’IA", desc: "Certification LinkedIn Learning sur les techniques de prompt engineering.", file: "/certifications/Prompt_Engineering.pdf" },
-  { title: "Les prompts engineering avancés", desc: "Certification LinkedIn Learning avancée sur l’IA générative.", file: "/certifications/Prompt_Engineering_Avance.pdf" }
-]
+import React from "react";
 
-const Card = ({ title, desc, file }) => (
-  <div className="grid grid-cols-[120px_1fr] gap-6 card">
-    <div className="bg-gray-200 rounded-xl flex items-center justify-center text-5xl">🎓</div>
-    <div>
-      <h3 className="text-2xl font-bold">{title}</h3>
-      <p className="text-gray-700 mt-2">{desc}</p>
-      <a href={file} target="_blank" className="inline-flex items-center gap-2 mt-4 px-5 py-3 rounded-full bg-indigo-900 text-white shadow-soft">Voir le certificat</a>
-    </div>
-  </div>
-)
+const certifications = [
+  {
+    title: "CCNA",
+    description: "Certification Cisco Certified Network Associate.",
+    image: "/images/certifications/ccna.png",
+  },
+  {
+    title: "Linux : Administration avancée",
+    description: "Certification sur la gestion avancée des systèmes Linux.",
+    image: "/images/certifications/linux.png",
+  },
+  {
+    title: "Prompts engineering avancés",
+    description: "Certification sur l'optimisation des prompts pour l’IA.",
+    image: "/images/certifications/prompt.png",
+  },
+  {
+    title: "Création de contenu avec l’IA",
+    description: "Certification sur l’utilisation de l’IA pour générer du contenu.",
+    image: "/images/certifications/ai.png",
+  },
+];
 
-export default function Certifications(){
+export default function Certifications() {
   return (
-    <section className="section">
-      <h2 className="text-3xl font-bold mb-8 text-center">Certifications</h2>
-      <div className="grid md:grid-cols-2 gap-8">{items.map((it,i)=>(<Card key={i} {...it} />))}</div>
+    <section className="py-16 bg-gray-50" id="certifications">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">Certifications</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {certifications.map((cert, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-lg rounded-lg p-6 flex items-center space-x-4 hover:shadow-xl transition"
+            >
+              <img
+                src={cert.image}
+                alt={cert.title}
+                className="w-20 h-20 object-contain"
+              />
+              <div>
+                <h3 className="text-xl font-semibold">{cert.title}</h3>
+                <p className="text-gray-600">{cert.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
-  )
+  );
 }
