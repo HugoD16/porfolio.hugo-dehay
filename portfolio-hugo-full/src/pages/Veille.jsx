@@ -1,24 +1,70 @@
-export default function Veille(){
+import React from "react";
+
+const articles = [
+  {
+    title: "Mistral AI : incarnation de l’intelligence artificielle à la française",
+    summary:
+      "L’entreprise française Mistral AI s’impose comme un acteur majeur de l’IA en Europe. Elle développe des modèles ouverts et veut concurrencer les géants américains.",
+    date: "26 septembre 2025",
+    source: "Le Monde",
+    link: "https://www.lemonde.fr/economie/article/2025/09/26/mistral-ai-incarnation-de-l-intelligence-artificielle-a-la-francaise_6643087_3234.html",
+    image: "/images/veille/mistral.png",
+  },
+  {
+    title: "Un chatbot déguisé en doudou : l’IA pénètre l’univers des enfants",
+    summary:
+      "Après avoir conquis les adultes, l’IA commence à se diffuser dans les jouets éducatifs. Des experts alertent sur les risques liés à la vie privée et au développement cognitif.",
+    date: "25 septembre 2025",
+    source: "Le Monde",
+    link: "https://www.lemonde.fr/idees/article/2025/09/25/un-chatbot-deguise-en-doudou-apres-avoir-colonise-le-monde-des-adultes-l-ia-penetre-celui-des-enfants_6642899_3232.html",
+    image: "/images/veille/chatbot.png",
+  },
+  {
+    title: "La quête de pouvoir de Sam Altman, patron de ChatGPT",
+    summary:
+      "Sam Altman, PDG d’OpenAI, poursuit son ambition de faire de l’IA une technologie incontournable, soulevant des questions sur la concentration de pouvoir.",
+    date: "27 septembre 2025",
+    source: "Le Monde",
+    link: "https://www.lemonde.fr/idees/article/2025/09/27/la-quete-de-pouvoir-de-sam-altman-patron-de-chatgpt_6643157_3232.html",
+    image: "/images/veille/samaltman.png",
+  },
+];
+
+export default function Veille() {
   return (
-    <section className="section max-w-4xl">
-      <h2 className="text-3xl font-bold mb-6">Veille : Impact de l’IA générative sur les métiers IT</h2>
-      <p className="text-gray-700 mb-4">
-        L’IA générative (ChatGPT, GitHub Copilot, Gemini, Claude) transforme déjà les métiers IT : 
-        accélération du développement, assistance à l’écriture de scripts, génération de documentation, 
-        et support de niveau 1. Les administrateurs systèmes et réseaux tirent parti de ces outils pour 
-        automatiser la rédaction de scripts (PowerShell, Bash), produire des guides pas-à-pas et analyser des logs.
-      </p>
-      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
-        <li><b>Gains de productivité</b> : génération de snippets et modèles de scripts.</li>
-        <li><b>Qualité & sécurité</b> : relecture automatique, détection d’erreurs potentielles.</li>
-        <li><b>Limites</b> : hallucinations, dépendance, confidentialité des données.</li>
-        <li><b>Bonnes pratiques</b> : valider les sorties, versionner, chiffrer les secrets, privilégier on‑prem si sensible.</li>
-      </ul>
-      <p className="text-gray-700">
-        Exemple concret pour SISR : génération d’un squelette de script PowerShell pour créer des comptes AD à partir d’un CSV,
-        puis adaptation manuelle et mise en place d’un dry‑run. L’IA sert d’assistant, 
-        mais l’humain reste responsable de la validation et de la sécurité.
-      </p>
+    <section className="py-16 bg-gray-50" id="veille">
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">Veille IA</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {articles.map((article, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition"
+            >
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{article.title}</h3>
+                <p className="text-gray-600 mb-4">{article.summary}</p>
+                <p className="text-sm text-gray-500 mb-2">
+                  {article.date} — {article.source}
+                </p>
+                <a
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo-600 hover:underline"
+                >
+                  Lire l’article
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
-  )
+  );
 }
